@@ -1,0 +1,79 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    color: #333;
+}
+
+header {
+    background-color: #4CAF50;
+    color: white;
+    padding: 20px;
+    text-align: center;
+}
+
+main {
+    padding: 20px;
+}
+
+.parking-section {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.parking-container {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.parking-space {
+    background-color: white;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 20px;
+    margin: 10px;
+    text-align: center;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    width: 250px;
+}
+
+.space-boxes {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 10px;
+    margin: 10px 0;
+}
+
+.space {
+    width: 40px;
+    height: 40px;
+    background-color: #ccc;
+    border-radius: 5px;
+}
+
+.available {
+    background-color: #4CAF50; /* Green for available spaces */
+    font-weight: 700;
+}
+
+.available-count {
+    font-weight: bold;
+    color: #4CAF50;
+}
+
+/* footer {
+    text-align: center;
+    padding: 10px;
+    background-color: #333;
+    color: white;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+} */
+
+.text{
+    justify-content: center;
+    padding-top: 12px;
+    font-weight: 2000;
+}
