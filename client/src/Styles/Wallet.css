@@ -1,0 +1,51 @@
+/* wallet.css */
+
+.wallet-container {
+    max-width: 400px;
+    margin: 40px auto;
+    padding: 20px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+  }
+  
+  .wallet-header {
+    background-color: #333;
+    color: #fff;
+    padding: 10px;
+    text-align: center;
+    border-bottom: 1px solid #333;
+  }
+  
+  .wallet-header h1 {
+    margin: 0;
+  }
+  
+  .wallet-balance {
+    padding: 20px;
+    text-align: center;
+  }
+  
+  .wallet-balance h3 {
+    margin: 0;
+  }
+  
+  .wallet-actions {
+    padding: 20px;
+    text-align: center;
+  }
+  
+  .wallet-actions button {
+    margin: 10px;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 10px;
+    background-color: #4CAF50;
+    color:rgba(16, 48, 30, 0.933);
+    cursor: pointer;
+  }
+  
+  .wallet-actions button:hover {
+    background-color: #3e8e41;
+  }
