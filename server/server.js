@@ -11,13 +11,14 @@ const port = process.env.PORT || 5000;
 app.use(cors());
 app.use(express.json());
 
-app.get('/message', (req, res) => {
-    res.json({ message: "Hello from server!" });
-});
 
 
 const signuproutes = require("./routes/SignUpRoutes");
 app.use("/" , signuproutes);
+
+const parkingslot = require("./routes/ParkingSpaceRoute");
+app.use("/parking", parkingslot);
+
 
 
 

@@ -54,7 +54,7 @@ main {
 
 .available {
     background-color: #4CAF50; /* Green for available spaces */
-    font-weight: 700;
+    font-weight: 1000;
 }
 
 .available-count {
@@ -62,7 +62,7 @@ main {
     color: #4CAF50;
 }
 
-/* footer {
+footer {
     text-align: center;
     padding: 10px;
     background-color: #333;
@@ -70,10 +70,9 @@ main {
     position: relative;
     bottom: 0;
     width: 100%;
-} */
-
+}
 .text{
     justify-content: center;
-    padding-top: 12px;
-    font-weight: 2000;
+    padding-top: 10px;
+    
 }
