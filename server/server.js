@@ -19,6 +19,9 @@ app.use("/" , signuproutes);
 const parkingslot = require("./routes/ParkingSpaceRoute");
 app.use("/parking", parkingslot);
 
+const WalletRoute = require("./routes/WalletRoute");
+app.use("/wallet",WalletRoute);
+
 
 
 

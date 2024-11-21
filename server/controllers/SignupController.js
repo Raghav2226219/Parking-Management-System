@@ -3,27 +3,31 @@ const User = require("../models/SignUpModel");
 const bcrypt = require("bcrypt");
 const jwt = require('jsonwebtoken');
 
-// Register user
+const createToken = (userId, email) => {
+    return jwt.sign(
+        { id: userId, email },
+        process.env.PRIVATE_KEY,
+        { expiresIn: '1h' }
+    );
+};
+
 const registerUser = asyncHandler(async (req, res) => {
-    const { username,email, phonenumber, password, role } = req.body;
+    const { username, email, phonenumber, password, role } = req.body;
 
     if (!username || !email || !phonenumber || !password || !role) {
         res.status(400);
         throw new Error("Please fill all fields");
     }
 
-    // Check if user already exists
     const userExists = await User.findOne({ email });
     if (userExists) {
         res.status(400);
         throw new Error("User already exists");
     }
 
-    // Hash password
     const salt = await bcrypt.genSalt(10);
     const hashedPassword = await bcrypt.hash(password, salt);
 
-    // Create user
     const user = await User.create({
         username,
         email,
@@ -35,7 +39,8 @@ const registerUser = asyncHandler(async (req, res) => {
     if (user) {
         res.status(201).json({
             _id: user.id,
-            email: user.email
+            email: user.email,
+            token:  createToken(user.id, user.email)
         });
     } else {
         res.status(400);
@@ -51,35 +56,26 @@ const loginUser = asyncHandler(async (req, res) => {
         throw new Error("Please enter both email and password");
     }
 
-    // Check if user exists
     const user = await User.findOne({ email });
     if (!user) {
         res.status(400);
         throw new Error("User not found");
     }
 
-    // Check if password matches
     const isPasswordCorrect = await bcrypt.compare(password, user.password);
     if (!isPasswordCorrect) {
         res.status(400);
         throw new Error("Invalid email or password");
     }
 
-    const token = jwt.sign(
-        { id: user._id, email: user.email },
-        process.env.PRIVATE_KEY,
-        { expiresIn: '1h' } 
-    );
+    console.log("Login Success");
 
-
-    console.log("Login Success")
-
-    // Successful login
     res.status(200).json({
         _id: user.id,
         email: user.email,
-        message: "Login successful"
+        message: "Login successful",
+        token: createToken(user.id, user.email)
     });
 });
 
-module.exports = {registerUser,loginUser};
+module.exports = { registerUser, loginUser };
